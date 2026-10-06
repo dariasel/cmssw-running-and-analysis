@@ -1,0 +1,13 @@
+SimG4CMS/HGCalTestBeam
+Geometry/HGCalTBCommonData
+Fireworks/Geometry
+Fireworks/Calo
+Fireworks/Core
+Geometry/HGCalGeometry
+CalibCalorimetry/HGCalPlugins
+IOMC/ParticleGuns
+SimCalorimetry/HGCalSimAlgos
+SimCalorimetry/HGCalSimProducers
+SimCalorimetry/HGCalAssociatorProducers
+Configuration/Geometry
+
