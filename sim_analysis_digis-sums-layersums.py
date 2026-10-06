@@ -22,7 +22,7 @@ print("start")
 paf = str(sys.argv[1])     # path where the data is located: root files generated after cmsRun
 enename = str(sys.argv[2]) # energy of the particle
 
-path2ring = "<need to specify!>" # path to the Rings.csv file that has the information about rings, radii and areas of all tiles; 
+path2rings = "<need to specify!>" # path to the Rings.csv file that has the information about rings, radii and areas of all tiles; 
 
 
 # No longer used TODO: check
