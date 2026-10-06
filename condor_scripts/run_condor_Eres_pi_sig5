@@ -1,0 +1,32 @@
+Executable = condor_Eres_pi_sig5.sh
+Should_Transfer_Files = NO
+Getenv = True
+#Output = /afs/cern.ch/user/d/dselivan/Simulation/my_digitizer/CMSSW_17_0_0_pre1/src/condor_out/log_$(E)_$(B)_$(L)_$(S).out
+#Error = /afs/cern.ch/user/d/dselivan/Simulation/my_digitizer/CMSSW_17_0_0_pre1/src/condor_out/log_$(E)_$(B)_$(L)_$(S).err
+#Log = /afs/cern.ch/user/d/dselivan/Simulation/my_digitizer/CMSSW_17_0_0_pre1/src/condor_out/log_$(E)_$(B)_$(L)_$(S).log
+
+# argumets: energy, board, layer, seed
+arguments = "$(E) $(B) $(L) $(S)" 
+
+# loop through energies in list: 
+E = $CHOICE(STEP,1, 2, 5, 10, 15, 20, 25, 30, 40, 50, 70, 90, 100)
+
+# queue jobs for N energies (number of energies in list), each with a given combo of board+layer+seed
+# this will submit 5*13=65 jobs to condor
+queue 13 B, L, S from (
+D, 34, 1
+D, 34, 2
+D, 34, 3
+D, 34, 4
+D, 34, 5
+)
+
+# A different example
+#E = $CHOICE(STEP, 10, 100)
+#queue 2 B, L, S from (
+#B, 38, 1
+#B, 38, 2
+#B, 38, 3
+#B, 38, 4
+#B, 38, 5
+#)

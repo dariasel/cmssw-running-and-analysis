@@ -1,0 +1,20 @@
+Executable = condor_Eres_pi_sig5_analysis.sh
+Should_Transfer_Files = NO
+Getenv = True
+#Output = /afs/cern.ch/user/d/dselivan/Simulation/my_digitizer/CMSSW_17_0_0_pre1/src/condor_out/log_$(E)_$(B)_$(L)_$(S).out
+#Error = /afs/cern.ch/user/d/dselivan/Simulation/my_digitizer/CMSSW_17_0_0_pre1/src/condor_out/log_$(E)_$(B)_$(L)_$(S).err
+#Log = /afs/cern.ch/user/d/dselivan/Simulation/my_digitizer/CMSSW_17_0_0_pre1/src/condor_out/log_$(E)_$(B)_$(L)_$(S).log
+
+# Only energy is needed for the script, sigma and board used for the location of data 
+# energy, sigma, board
+arguments = "$(E) $(S) $(B)"
+
+# looping over a list of energies that were used in cmsRun
+E = $CHOICE(STEP, 1, 2, 5, 10, 15, 20, 25, 30, 40, 50, 70, 90, 100)
+
+# queue N jobs (corresponding to the number of energes) for a given combo of sigma+board
+queue 13 S, B from (
+#50, D  # use if sigma was changed to e.g. 50% 
+5, D     
+)
+
